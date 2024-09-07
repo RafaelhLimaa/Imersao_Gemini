@@ -4,40 +4,46 @@ function pesquisar() {
   
     // Obtém o valor digitado no campo de pesquisa e converte para minúsculas
     let campoPesquisa = document.getElementById("campo-pesquisa").value.toLowerCase();
-  
+    console.log(campoPesquisa);
     // Inicializa uma string vazia para armazenar os resultados
     let resultados = "";
-  
+
     // Verifica se o campo de pesquisa está vazio
-    if (campoPesquisa === "") {
+    if (campoPesquisa == "") {
       // Se estiver vazio, exibe uma mensagem de erro
       section.innerHTML = "<p>Nenhum resultado foi encontrado. Nenhuma palavra foi digitada.</p>";
       return; // Interrompe a função
     }
-  
+    
+    // Função para retirar acentuação das palavras no banco de dados para facilitar comparação
+    function removerAcentos(str) {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    }
+
     // Itera sobre cada dado da lista de dados
     for (let dado of dados) {
-      // Converte todos os dados do objeto para minúsculas para facilitar a comparação
-      let estado = dado.estado.toLowerCase();
-      let cidade = dado.cidade.toLowerCase();
-      let atracao = dado.atracao.toLowerCase();
-      let informacoes = dado.informacoes.toLowerCase();
+      // Converte todos os dados do objeto para minúsculas e sem acentuação para facilitar a comparação
+      let estado = removerAcentos(dado.estado).toLowerCase();
+      let cidade = removerAcentos(dado.cidade).toLowerCase();
+      let atracao = removerAcentos(dado.atracao).toLowerCase();
+      let informacoes = removerAcentos(dado.informacoes).toLowerCase();
   
       // Verifica se a palavra pesquisada está contida em algum dos campos
-      if (estado.includes(campoPesquisa) || cidade.includes(campoPesquisa) || atracao.includes(campoPesquisa) || informacoes.includes(campoPesquisa)) {
+      if (informacoes.includes(campoPesquisa) || cidade.includes(campoPesquisa) || atracao.includes(campoPesquisa) || estado.includes(campoPesquisa)) {
         // Cria um novo elemento HTML para exibir o resultado
         resultados += `
           <div class="item-resultado">
             <h2>
-              <a href="#" target="_blank">${dado.estado} - ${dado.cidade}</a>
-              <p><a href="#" target="_blank">${dado.atracao}</a></p>
+              ${dado.estado} - ${dado.cidade}
+              <p>${dado.atracao}</p>
             </h2>
             <p class="descricao-meta">${dado.informacoes}</p>
           </div>
         `;
-      } else if (!resultados) { // Verifica se nenhum resultado foi encontrado até o momento
-        resultados = "<p>Nenhum resultado foi encontrado na sua busca. Digite uma palavra válida.</p>";
       }
+    }
+    if (!resultados){ // Verifica se nenhum resultado foi encontrado até o momento
+        resultados = "<p>Nenhum resultado foi encontrado na sua busca. Digite uma palavra válida.</p>";
     }
     // Atualiza o conteúdo da seção com os resultados
     section.innerHTML = resultados;

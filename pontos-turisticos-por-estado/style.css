@@ -16,7 +16,7 @@ body {
 
 /* Estiliza os títulos h1 */
 h1 {
-    font-size: 2.5rem; /* Tamanho da fonte */
+    font-size: 2.2rem; /* Tamanho da fonte */
     color: #083c30; /* Cor do texto */
     text-align: center; /* Alinha o texto ao centro */
     letter-spacing: 0.4rem; /* Espaçamento entre letras */
@@ -61,12 +61,13 @@ section button:hover {
 
 /* Estiliza a caixa de resultados da pesquisa */
 .resultados-pesquisa {
-    width: 70rem; /* Largura máxima da caixa de resultados */
+    width: 50rem; /* Largura máxima da caixa de resultados */
     height: 46vh; /* Altura máxima da caixa de resultados */
     overflow-y: auto; /* Adiciona rolagem vertical se necessário */
     margin-top: 1rem; /* Espaçamento acima da caixa de resultados */
     padding: 1rem; /* Espaçamento interno */
     border-radius: 0.6rem; /* Borda arredondada */
+    font-size: 1.3rem; /* Tamanho da fonte */
 }
 
 /* Estiliza cada item de resultado */
@@ -99,6 +100,7 @@ section button:hover {
 .descricao-meta {
     color: #45474B; /* Cor do texto */
     margin: 0.5rem 0; /* Margem acima e abaixo */
+    font-size: 1.2rem; /* Tamanho da fonte */
 }
 
 /* Estiliza o rodapé da página */
@@ -110,7 +112,7 @@ footer {
     width: 100%; /* Largura total da página */
     position: absolute; /* Posiciona o rodapé */
     bottom: 0; /* Alinha ao fundo da página */
-    font-size: 1rem; /* Tamanho da fonte */
+    font-size: 1.2rem; /* Tamanho da fonte */
 }
 
 @media (max-width: 768px) {
