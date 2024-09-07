@@ -1,4 +1,4 @@
-## 5 Turismos por Estado: Sua Próxima Aventura Te Espera! 
+## 5 Turismos por Estado: Sua Próxima Aventura Te Espera! - Imersão DEV com Google Gemini
 
 **O que é essa aplicação?**
 
